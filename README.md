@@ -51,21 +51,6 @@ rly chains addr freeflix-media-hub-0
 rly chains addr freeflix-media-hub-1
 ```
 
-#### Docker configuration
-- Use the docker containers to init the chains
-
-```bash
-docker pull saisunkari19/ff-hub:0265266
-```
-- Starts the chains
-```bash
-docker run -p 26657:26657 <image:tag> <chain-id> <relayer address>
-
-docker run -p 26657:26657 saisunkari19/ff-hub:0265266 $(rly chains addr freeflix-media-hub-0) > logs/ff0.log 2>&1 &
-
-docker run -p 26557:26657 saisunkari19/ff-hub:0265266 $(rly chains addr freeflix-media-hub-1) > logs/ff1.log 2>&1 &
-```
-
 - Init the lite client b/w two chains
 ```bash
 rly lite init ic0 -f
