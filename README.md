@@ -1,6 +1,6 @@
 # FreeFlix-Media-Hub
 
-FreeFlix-Media-Hub
+Installation instructions to setup and deploy the ```freeflix-media-hub```.
 
 ## Full Node Quick Start
 
@@ -18,12 +18,14 @@ cd freeflix-media-hub
 make install
 
 # Create genesis account key and copy the address
-ffcli keys add {keyName}
-Ex: ffcli keys add genesis
+# ffcli keys add {keyName}
+# for example:
+ffcli keys add genesis
 
 # Run entry-point.sh to start chain
-sh entry-point.sh {chain_id} {genesis_account_address_copied_from_above_step}
-Ex: sh entry-point.sh freeflix-media-hub freeflix1f3pvvs6at2m79rjurl7q8tygtknjkq9290ej3q
+# sh entry-point.sh {chain_id} {genesis_account_address_copied_from_above_step}
+# for example:
+sh entry-point.sh freeflix-media-hub freeflix1f3pvvs6at2m79rjurl23789tygtknjkq9290ej3q
 
 ```
 
@@ -32,10 +34,13 @@ Ex: sh entry-point.sh freeflix-media-hub freeflix1f3pvvs6at2m79rjurl7q8tygtknjkq
 ### Local Setup
 
 #### Relayer configurations
-- download the latest  [realyer](https://github.com/iqlusioninc/relayer) 
+
+You will:
+
+- download the latest [relayer](https://github.com/iqlusioninc/relayer) 
 - install the relayer
 
-Then config the relayer for the chain
+Then, config the relayer for the chain
 ```bash
 rly config init
 rly config list
@@ -45,7 +50,7 @@ rly keys restore ic0 testkey "pitch orient aunt brief battle width reunion labor
 rly keys restore ic1 testkey "worry lock purity labor alpha obvious drama magic curious neutral hair vapor portion retreat expire muscle search turtle aisle ship celery limit frog torch"
 
 ```
-Use above keys to Start the chains
+Use above keys to start the chains
 ```bash
 rly chains addr freeflix-media-hub-0
 rly chains addr freeflix-media-hub-1
@@ -65,6 +70,7 @@ rly tx full-path path --timeout 7s
 
 - Send transactions
 ```bash
+
 rly tx raw xfer-send freeflix-media-hub-0 freeflix-media-hub-1 10mdm true $(rly chains addr freeflix-media-hub-1)
 rly tx raw xfer-send freeflix-media-hub-0 freeflix-media-hub-1 10mdm true $(rly chains addr freeflix-media-hub-1)
 rly q bal freeflix-media-hub-0
@@ -79,7 +85,8 @@ rly q queue path
 ```bash
 rly start path >logs/rly.log 2>&1 &
 ```
-Reverse the transactions b/w chains
+
+Transfer between chains
 
 ```bash
 rly q queue path
@@ -94,4 +101,4 @@ rly q bal freeflix-media-hub-1
 
 ```
 
-> you can directly run start.sh for all these 
+> you can configure & directly run start.sh for these commands to execute
