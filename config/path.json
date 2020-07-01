@@ -1,0 +1,19 @@
+{
+  "src": {
+    "chain-id": "freeflix-media-hub-0",
+    "client-id": "ibconeclient",
+    "connection-id": "ibconeconnection",
+    "channel-id": "ibconexfer",
+    "port-id": "transfer"
+  },
+  "dst": {
+    "chain-id": "freeflix-media-hub-1",
+    "client-id": "ibczeroclient",
+    "connection-id": "ibczeroconnection",
+    "channel-id": "ibczeroxfer",
+    "port-id": "transfer"
+  },
+  "strategy": {
+    "type": "naive"
+  }
+}

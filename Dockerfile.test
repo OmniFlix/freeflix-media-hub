@@ -1,0 +1,24 @@
+
+ARG VERSION=1.14
+#stage1 for installation
+FROM golang:${VERSION}-alpine as builder
+
+
+ENV DIR=github.com/FreeFlixMedia/freeflix-media-hub
+ENV PACKAGES make git libc-dev bash gcc linux-headers eudev-dev
+
+
+WORKDIR ${DIR}
+COPY . .
+RUN apk add --no-cache $PACKAGES && \
+    make all
+
+
+#state2 for builds
+FROM alpine:3.6
+
+WORKDIR  /root
+COPY --from=builder /go/bin/ffd /usr/bin/ffd
+COPY --from=builder /go/bin/ffcli /usr/bin/ffcli
+
+ENTRYPOINT ["ffcli"]
