@@ -29,4 +29,4 @@ sed -i 's/timeout_commit = "5s"/timeout_commit = "1s"/g' ~/.ffd/config/config.to
 sed -i 's/timeout_propose = "3s"/timeout_propose = "1s"/g' ~/.ffd/config/config.toml
 sed -i 's/index_all_keys = false/index_all_keys = true/g' ~/.ffd/config/config.toml
 
-#ffd start --pruning=nothing
+ffd start --pruning=nothing

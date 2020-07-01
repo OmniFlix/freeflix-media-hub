@@ -2,6 +2,31 @@
 
 FreeFlix-Media-Hub
 
+## Full Node Quick Start
+
+### Note: Requires [Go 1.14+](https://golang.org/dl/)
+
+### Build, Install and Start your Node
+```bash
+# Clone FreeFlix-Media-Hub from https://github.com/FreeFlixMedia/freeflix-media-hub
+git clone https://github.com/FreeFlixMedia/freeflix-media-hub
+
+# Enter the folder freeflix-media-hub was cloned into
+cd freeflix-media-hub
+
+# Compile and install ff
+make install
+
+# Create genesis account key and copy the address
+ffcli keys add {keyName}
+Ex: ffcli keys add genesis
+
+# Run entry-point.sh to start chain
+sh entry-point.sh {chain_id} {genesis_account_address_copied_from_above_step}
+Ex: sh entry-point.sh freeflix-media-hub freeflix1f3pvvs6at2m79rjurl7q8tygtknjkq9290ej3q
+
+```
+
 ## IBC Transactions
 
 ### Local Setup
