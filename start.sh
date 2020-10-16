@@ -23,27 +23,27 @@ rly lite init freeflix-media-hub-1 -f
 rly tx full-path path --timeout 3s
 
 while true; do
-  echo "transfer from freeflix-media-hub-0"
+  echo "Transfer from freeflix-media-hub-0"
   rly tx raw xfer-send freeflix-media-hub-0 freeflix-media-hub-1 10mdm true $(rly chains addr freeflix-media-hub-1)
   rly tx raw xfer-send freeflix-media-hub-0 freeflix-media-hub-1 10mdm true $(rly chains addr freeflix-media-hub-1)
   echo "After send balance need to"
   rly q bal freeflix-media-hub-0
 
-  echo "transfer from freeflix-media-hub-1"
+  echo "Transfer from freeflix-media-hub-1"
   rly tx raw xfer-send freeflix-media-hub-1 freeflix-media-hub-0 10mdm true $(rly chains addr freeflix-media-hub-0)
   rly tx raw xfer-send freeflix-media-hub-1 freeflix-media-hub-0 10mdm true $(rly chains addr freeflix-media-hub-0)
   echo "After send balance need to"
   rly q bal freeflix-media-hub-1
 
-  echo "before relay"
+  echo "Query relay path"
   rly q queue path
   sleep 2s
 
-  echo "relayer start"
+  echo "Relayer start"
   rly start path >logs/rly.log 2>&1 &
 
   sleep 3s
-  echo "recverse transfers"
+  echo "Reverse transfers"
   rly q queue path
   rly q bal freeflix-media-hub-0
   rly q bal freeflix-media-hub-1
@@ -53,7 +53,7 @@ while true; do
   rly tx raw xfer-send freeflix-media-hub-1 freeflix-media-hub-0 20mdm false $(rly chains addr freeflix-media-hub-0)
   sleep 6s
 
-  echo "initial stage"
+  echo "Query balances"
   rly q bal freeflix-media-hub-0
   rly q bal freeflix-media-hub-1
 
